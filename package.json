@@ -1,0 +1,37 @@
+{
+  "name": "dsh-ds-attach",
+  "version": "0.1.0",
+  "description": "chat.deepseek.com-style attachments for DeepSeek Harness: official upload icon, DS-style file cards (240x64, 16px radius), drag-drop, text extraction (PDF/DOCX/XLSX/TXT) injected into the message",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/*.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "pdfjs-dist": "^6.2.108",
+    "mammoth": "^1.12.1",
+    "xlsx": "^0.18.5"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "license": "MIT"
+}

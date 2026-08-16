@@ -1,0 +1,4 @@
+# dsh-ds-attach: DS-chat-style attachments (official icon + cards + text extraction).
+- insert:
+    - id: ds-attach
+      name: dsh-ds-attach
