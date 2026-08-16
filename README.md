@@ -19,6 +19,7 @@
 - **发送即清空**：卡片随消息发送后，输入框附件区自动清空（DS chat 行为）
 - **消息里显示卡片**：自定义 user 节点渲染器（priority -1 接管），对话流中附件显示为**真正的文件卡片**（文件名 + 彩色图标 + 大小，点击展开全文），而非原始长文本；普通消息保持原样浅蓝气泡
 - **图片分流**：图片自动走 DSH 原生视觉附件管线
+- **扫描版 PDF OCR**（与官方一致）：PDF 无文字层时，自动渲染每页为图片并调用视觉模型识别文字（智谱 glm-4v-flash，走 `DEEPEYE_API_KEY` / `BOOK_OCR_API_KEY` 环境变量）
 - **模型可读**：提取文本随消息结构化注入（`【附件】名\n【文件大小】N\n【文件内容】…【文件内容结束】`），模型读到完整内容
 
 ## 安装
@@ -39,10 +40,10 @@ dsh plugin --profile web add <本目录绝对路径>
 
 ## 说明
 
-- **host 半**：`/ds-attach/upload`（base64 接收 + 落盘 + 文本提取）、`/ds-attach/file`（回读）、`/ds-attach/meta`（元信息）
+- **host 半**：`/ds-attach/upload`（base64 接收 + 落盘 + 文本提取 + 扫描 PDF OCR）、`/ds-attach/file`（回读）、`/ds-attach/meta`（元信息）
 - **client 半**：回形针按钮 + 拖拽 + 卡片 UI + user 消息渲染器
 - 文件存于 `$DSH_HOME/ds-attach/<sessionId>/`，会话隔离，路径穿越防护
-- 扫描版 PDF（无文字层）显示「未提取到文本」（与官方一致，官方也不做 OCR）
+- 扫描版 PDF（无文字层）：自动 OCR（渲染页图 → 视觉模型识别），依赖 `DEEPEYE_API_KEY` 或 `BOOK_OCR_API_KEY` 环境变量（智谱 glm-4v-flash，baseUrl 默认 `https://open.bigmodel.cn/api/paas/v4`）；未配置 key 时才显示「未提取到文本」
 - user 渲染器接管所有用户消息渲染（与产品样式一致），保证普通消息显示不变
 
 ## License
