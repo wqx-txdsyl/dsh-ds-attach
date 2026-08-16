@@ -2,6 +2,8 @@
 
 **DeepSeek Chat（chat.deepseek.com）同款附件渲染样式** —— 上传按钮、文件卡片、图标、消息内附件展示，全部一比一复刻官方前端（图标与样式直接提取自 chat.deepseek.com 前端 bundle）。DeepSeek Harness 插件（dual-face bundle）。
 
+![预览](docs/images/preview.svg)
+
 ## 功能（与 chat.deepseek.com 一致）
 
 - **回形针上传按钮**：输入框工具栏左侧，DSH 官方 `IconPaperclipOutline16` 图标，点击选择任意文档/图片（多选），tooltip「上传文档或图片（仅文本提取）」
