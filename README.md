@@ -44,7 +44,7 @@ dsh plugin --profile web add <本目录绝对路径>
 - **client 半**：回形针按钮 + 拖拽 + 卡片 UI + user 消息渲染器
 - 文件存于 `$DSH_HOME/ds-attach/<sessionId>/`，会话隔离，路径穿越防护
 - 扫描版 PDF（无文字层）：自动 OCR（渲染页图 → 视觉模型识别），依赖 `DEEPEYE_API_KEY` 或 `BOOK_OCR_API_KEY` 环境变量（智谱 glm-4v-flash，baseUrl 默认 `https://open.bigmodel.cn/api/paas/v4`）；未配置 key 时才显示「未提取到文本」
-  - OCR 可调环境变量：`BOOK_OCR_SCALE`（渲染分辨率倍数，默认 3，越高字形越清晰）、`BOOK_OCR_CONCURRENCY`（并行页数，默认 2）、`BOOK_OCR_MODEL` / `BOOK_OCR_BASE_URL` / `BOOK_OCR_MAX_TOKENS` / `BOOK_OCR_TIMEOUT_MS`
+  - OCR 可调环境变量：`BOOK_OCR_SCALE`（渲染分辨率倍数，默认 3，越高字形越清晰）、`BOOK_OCR_CONCURRENCY`（并行页数，默认 2）、`BOOK_OCR_CROP_TOP` / `BOOK_OCR_CROP_BOTTOM`（OCR 前裁剪页眉页脚区域，页面高度比例，默认 0.07/0.08，设 0 关闭）、`BOOK_OCR_MODEL` / `BOOK_OCR_BASE_URL` / `BOOK_OCR_MAX_TOKENS` / `BOOK_OCR_TIMEOUT_MS`
 - user 渲染器接管所有用户消息渲染（与产品样式一致），保证普通消息显示不变
 
 ## License
