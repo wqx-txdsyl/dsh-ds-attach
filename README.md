@@ -1,6 +1,6 @@
 # dsh-ds-attach
 
-复刻 [chat.deepseek.com](https://chat.deepseek.com) 附件功能的 DeepSeek Harness 插件（dual-face bundle）。
+**DeepSeek Chat（chat.deepseek.com）同款附件渲染样式** —— 上传按钮、文件卡片、图标、消息内附件展示，全部一比一复刻官方前端（图标与样式直接提取自 chat.deepseek.com 前端 bundle）。DeepSeek Harness 插件（dual-face bundle）。
 
 ## 功能（与 chat.deepseek.com 一致）
 
