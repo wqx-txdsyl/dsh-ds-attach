@@ -15,7 +15,7 @@
   - **DOCX** → mammoth 提取文本
   - **XLSX** → xlsx 读取单元格（前 5 个 sheet）
   - **TXT/MD/代码** → 直接读文本
-  - 按 token 预算截断（6 万字符）
+  - 按 token 预算截断（默认 15 万字符，`DS_ATTACH_MAX_CHARS` 可调；在段落边界截断，不切断句子）
 - **发送即清空**：卡片随消息发送后，输入框附件区自动清空（DS chat 行为）
 - **消息里显示卡片**：自定义 user 节点渲染器（priority -1 接管），对话流中附件显示为**真正的文件卡片**（文件名 + 彩色图标 + 大小，点击展开全文），而非原始长文本；普通消息保持原样浅蓝气泡
 - **图片分流**：图片自动走 DSH 原生视觉附件管线
@@ -44,6 +44,7 @@ dsh plugin --profile web add <本目录绝对路径>
 - **client 半**：回形针按钮 + 拖拽 + 卡片 UI + user 消息渲染器
 - 文件存于 `$DSH_HOME/ds-attach/<sessionId>/`，会话隔离，路径穿越防护
 - 扫描版 PDF（无文字层）：自动 OCR（渲染页图 → 视觉模型识别），依赖 `DEEPEYE_API_KEY` 或 `BOOK_OCR_API_KEY` 环境变量（智谱 glm-4v-flash，baseUrl 默认 `https://open.bigmodel.cn/api/paas/v4`）；未配置 key 时才显示「未提取到文本」
+  - OCR 可调环境变量：`BOOK_OCR_SCALE`（渲染分辨率倍数，默认 3，越高字形越清晰）、`BOOK_OCR_CONCURRENCY`（并行页数，默认 2）、`BOOK_OCR_MODEL` / `BOOK_OCR_BASE_URL` / `BOOK_OCR_MAX_TOKENS` / `BOOK_OCR_TIMEOUT_MS`
 - user 渲染器接管所有用户消息渲染（与产品样式一致），保证普通消息显示不变
 
 ## License
