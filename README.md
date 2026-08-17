@@ -1,5 +1,13 @@
 # dsh-ds-attach
 
+> ### 🛠️ 本仓库为修复版 fork
+> 原插件由 [wqx-txdsyl](https://github.com/wqx-txdsyl) 开发 —— 界面、交互、图标全部一比一复刻 chat.deepseek.com，质量非常高，向原作者致敬！
+> 本 fork **仅修复**「已上传附件无法删除」的问题，其余代码与上游保持一致：
+> 1. **修复**：卡片右上角删除按钮（✕）因内联 `opacity: 0` 样式优先级压过悬停 CSS 规则而永远不可见 → 默认隐藏改为 CSS 类控制，悬停卡片即显示 ✕
+> 2. **新增**：服务端 `POST /ds-attach/delete` 路由，点击 ✕ 时同步删除磁盘上的上传文件，不再残留
+>
+> 上游：[wqx-txdsyl/dsh-ds-attach](https://github.com/wqx-txdsyl/dsh-ds-attach) | 修复说明：[Issue #2](https://github.com/wqx-txdsyl/dsh-ds-attach/issues/2)
+
 **DeepSeek Chat（chat.deepseek.com）同款附件渲染样式** —— 上传按钮、文件卡片、图标、消息内附件展示，全部一比一复刻官方前端（图标与样式直接提取自 chat.deepseek.com 前端 bundle）。DeepSeek Harness 插件（dual-face bundle）。
 
 ![预览](docs/images/preview.svg)
